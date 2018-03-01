@@ -1,0 +1,77 @@
+* xr-swiper
+
+A React Component for swipeable views, includes useful components like pinchable images
+
+** Install
+
+#+BEGIN_SRC shell
+  $ yarn add xr-swiper
+#+END_SRC
+
+** Benefit
+
+- Simple: Based on [[hammerjs.github.io/][hammerjs]] and React, no other deps
+- Modern: Use flex, vw, vh, etc. to simpilify your work
+- Easy of use: You don't need to include many API and include multi CSS, just import this library, render it with React
+- Unrestrained: Unlike [[https://github.com/dimsemenov/PhotoSwipe][PhotoSwipe]], you don't need to specify image size, so it can be more widely use
+
+** Use
+
+*** Example
+
+#+BEGIN_SRC js
+  import React from 'react'
+  import Swiper from 'xr-swiper'
+
+  class App extends React.Component {
+    render() {
+      return (
+        <Swiper
+          className="Swiper"
+          startIndex={2}
+        >
+          <div>container 1</div>
+          <div>container 2</div>
+          <div>container 3</div>
+        </Swiper>
+      )
+    }
+  }
+#+END_SRC
+
+*** Props
+
+- ~className: string~ - Root className, also className prefix for children, default to ~ReactSwiper~
+- ~startIndex: number~ - Start slide index, default to ~0~
+- ~speed: number~ - Transition duration, default to ~300ms~
+- ~continuous: boolean~ - Create an infinite feel with no endpoints, default to ~true~
+- ~disableTouch: boolean~ - If disable touch event like swipe & pinch, default to ~false~
+- ~disabled: boolean~ - If totally disable swiper
+- ~onSwipeStart: Function~ - Fire when swipe start
+- ~onSwipeEnd~ - Fire when swipe end
+- ~onChange~ - Fire when swipe end and slide index change
+
+*** CSS
+
+Some simple CSS rules must attach to element.
+
+Assume we set ~className~ to ~Swipe~
+
+#+BEGIN_SRC css
+  .Swiper {
+    overflow: hidden;
+  }
+
+  .Swiper-ItemContainer {
+    display: flex;
+  }
+
+  .Swiper-Item {
+    flex: 1;
+    position: relative;
+  }
+#+END_SRC
+
+** License
+
+MIT

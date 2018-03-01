@@ -1,0 +1,43 @@
+ * {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.Swiper,
+.Swiper-ItemContainer,
+.Swiper-ItemContainer > * {
+  width: 100%;
+  height: 100%;
+}
+
+.Swiper {
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.Swiper-ItemContainer {
+  display: flex;
+}
+
+.Swiper-Item {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.Swiper-ItemContainer img {
+  max-width: 90%;
+  max-height: 90vh;
+  flex-grow: 0;
+}
