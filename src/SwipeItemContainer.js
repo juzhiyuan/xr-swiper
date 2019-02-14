@@ -18,10 +18,17 @@ export default class SwipeItemContainer extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    if (!this.props.disableTouch && this.mc) {
+      this.mc.off('pan', this.handlePan)
+    }
+  }
+
   bindPanEvent() {
     const mc = new Hammer.Manager(this.node)
     mc.add(new Hammer.Pan({direction: Hammer.DIRECTION_HORIZONTAL}))
     mc.on('pan', this.handlePan)
+    this.mc = mc
   }
 
   handlePan = (e) => {
@@ -66,7 +73,9 @@ export default class SwipeItemContainer extends React.Component {
     this.node.style.transition = `transform ease-in-out ${speed / 1000}s`
     return new Promise(resolve => {
       requestAnimationFrame(() => {
-        this.node.style.transform = `translateX(${target}px)`
+        if (this.node) {
+          this.node.style.transform = `translateX(${target}px)`
+        }
 
         setTimeout(() => {
           if (this.node) {

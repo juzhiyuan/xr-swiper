@@ -30,6 +30,7 @@ class Swiper extends React.Component {
 
   componentWillUnmount() {
     global.removeEventListener('resize', this.handleResize)
+    this.destroy = true
   }
 
   handleResize = () => {
@@ -53,9 +54,11 @@ class Swiper extends React.Component {
     } else if (current < 0) {
       current = children.length - 1
     }
-    this.setState({
-      currentIndex: current,
-    })
+    if (!this.destroy) {
+      this.setState({
+        currentIndex: current,
+      })
+    }
     if (onChange) {
       onChange(current)
     }
