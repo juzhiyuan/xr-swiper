@@ -69,8 +69,10 @@ export default class SwipeItemContainer extends React.Component {
         this.node.style.transform = `translateX(${target}px)`
 
         setTimeout(() => {
-          this.node.style.transition = null
-          this.node.style.transform = null
+          if (this.node) {
+            this.node.style.transition = null
+            this.node.style.transform = null
+          }
           resolve()
         }, speed)
       })
