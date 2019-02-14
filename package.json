@@ -1,6 +1,6 @@
 {
   "name": "xr-swiper",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A React Component for swipeable views, includes useful components like pinchable images",
   "author": "i@xxxiin.com",
   "repository": {
@@ -31,7 +31,7 @@
     "react-dom": "^16.2.0",
     "style-loader": "^0.20.2",
     "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.9",
+    "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.0"
   },
   "peerDependencies": {
