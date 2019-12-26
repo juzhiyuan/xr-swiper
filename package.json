@@ -11,7 +11,8 @@
   "main": "lib",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js",
-    "build": "babel src --out-dir lib --no-comments"
+    "build": "babel src --out-dir lib --no-comments",
+    "dev": "watch 'npm run build' ./src --wait=0"
   },
   "files": [
     "lib"
@@ -30,6 +31,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "style-loader": "^0.20.2",
+    "watch": "^1.0.2",
     "webpack": "^4.0.1",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.0"
