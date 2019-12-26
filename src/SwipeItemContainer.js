@@ -31,14 +31,24 @@ export default class SwipeItemContainer extends React.Component {
     this.mc = mc
   }
 
+  resetSwiping() {
+    const {onSwipeCancel} = this.props
+    this.transformTo(0)
+    store.swiping = false
+    if (onSwipeCancel) {
+      onSwipeCancel()
+    }
+  }
+
   handlePan = (e) => {
-    const {onSwipeStart, onSwipeCancel, disabled} = this.props
+    const {onSwipeStart, disabled} = this.props
     if (getResult(disabled)) { return }
 
     if (store.disableSwipe) { return }
     const move = e.deltaX
 
     if (e.center.x === 0 && e.center.y === 0 && e.distance > 100) {
+      this.resetSwiping()
       return // hammer bug ?
     }
 
@@ -59,11 +69,7 @@ export default class SwipeItemContainer extends React.Component {
       if (Math.abs(move) > SwipeItemContainer.threshold) {
         triggerSwipe(move > 0 ? -1 : 1).then(() => { store.swiping = false })
       } else {
-        this.transformTo(0)
-        store.swiping = false
-        if (onSwipeCancel) {
-          onSwipeCancel()
-        }
+        this.resetSwiping()
       }
     }
   }
